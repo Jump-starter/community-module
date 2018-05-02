@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --coverage",
-    "build": "webpack",
+    "build": "webpack -d --watch",
     "style": "sass ./client/src/stylesheets/base.scss ./client/dist/styles.css",
     "start": "nodemon server/basic-server.js"
   },
