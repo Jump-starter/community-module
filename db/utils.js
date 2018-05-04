@@ -22,6 +22,5 @@ function loadBackers(backerIds, callback) {
   });
 }
 
-
 module.exports.loadProject = loadProject;
 module.exports.loadBackers = loadBackers;

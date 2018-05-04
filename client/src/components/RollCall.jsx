@@ -32,7 +32,7 @@ class RollCall extends Component {
                 <div className="backerProjectsBacked">Backed {backer.fundedProjects} {backer.fundedProjects === 1 ? 'project' : 'projects'}</div>
               </div>
             </div>
-            ))
+          ))
         }
           <button id="seeMoreBackers" onClick={this.checkMoreBackers}>See more!</button>
         </div>

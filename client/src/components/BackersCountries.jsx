@@ -8,7 +8,6 @@ class BackersCountries extends Component {
     };
   }
 
-
   componentDidUpdate() {
     const { backers } = this.props;
     const countries = {};
@@ -32,22 +31,21 @@ class BackersCountries extends Component {
     }
   }
 
-
   render() {
     return (
       <div className="BackersCountriesContainer">
         <div className="title">Where Backers Come From</div>
         <div className="title titleWithBottomBorder">Top Countries</div>
         <div className="countryDetailsContainer">{
-        this.state.countries.slice(0, 10).map(country => (
-          <div className="countryInlineElement">
-            <div className="leftSide">
-              <a className="country" href={`https://en.wikipedia.org/wiki/${country.name}`}>{country.name}</a>
+          this.state.countries.slice(0, 10).map(country => (
+            <div className="countryInlineElement">
+              <div className="leftSide">
+                <a className="country" href={`https://en.wikipedia.org/wiki/${country.name}`}>{country.name}</a>
+              </div>
+              <div className="rightSide">
+                <div className="backerCount">{`${country.backers.toLocaleString('en', { useGrouping: true })} backers`}</div>
+              </div>
             </div>
-            <div className="rightSide">
-              <div className="backerCount">{`${country.backers.toLocaleString('en', { useGrouping: true })} backers`}</div>
-            </div>
-          </div>
           ))
         }
         </div>
