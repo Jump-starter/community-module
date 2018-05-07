@@ -38,7 +38,7 @@ const seedUsers = () => {
       let name = faker.lorem.word();
       let city = faker.address.city();
       let country = faker.address.country();
-      let avatar = `https://s3-us-west-1.amazonaws.com/jumpstartercommunity/avatar${avatarID}.jpg`
+      let avatar = `https://s3-us-west-1.amazonaws.com/jumpstartercommunity/avatar${avatarID}.jpg`;
       userBatch += `${name}|${city}|${country}|${avatar}\n`;
     }
     console.log(i);

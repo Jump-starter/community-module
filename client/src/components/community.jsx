@@ -33,7 +33,6 @@ class Community extends Component {
       });
   }
 
-
   render() {
     return (
       <div className="communityModuleContainer">
