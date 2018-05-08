@@ -35,7 +35,7 @@ const seedUsers = () => {
     for (let j = 0; j < 2000; j++) {
       let avatarID = getRandomInt(0, 29);
 
-      let name = faker.lorem.word();
+      let name = faker.name.findName();
       let city = faker.address.city();
       let country = faker.address.country();
       let avatar = `https://s3-us-west-1.amazonaws.com/jumpstartercommunity/avatar${avatarID}.jpg`;
@@ -74,4 +74,4 @@ const projectsUserIsBacking = (userID) => {
   
   return projectsUsersPairings;
 }
-seedProjectsUsers();
+// seedProjectsUsers();
