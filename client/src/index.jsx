@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Community from './components/community.jsx';
+import Community from './components/Community';
 
 window.React = React;
 window.ReactDOM = ReactDOM;
