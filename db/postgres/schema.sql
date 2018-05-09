@@ -16,7 +16,7 @@ CREATE TABLE users (
   name VARCHAR(50),
   city VARCHAR(75),
   country VARCHAR(75),
-  fundedProjects INT,
+  funded_project_count INT,
   avatar TEXT
 );
 
