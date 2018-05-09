@@ -1,6 +1,6 @@
 const pgClient = require('./db/postgres/index.js');
 
-for (let i = 1; i < 1000; i++) {
+for (let i = 1; i < 8000001; i++) {
   const backedProjectCountQuery = `SELECT COUNT(*) FROM (
                                     SELECT p.*
                                     FROM projects p
@@ -13,9 +13,11 @@ for (let i = 1; i < 1000; i++) {
     const updateFundedProjectsQuery = `UPDATE users
                                        SET fundedProjects = fundedProjects + ${fundedProjectCount}
                                        WHERE id = ${i}`
-    pgClient.query(updateFundedProjectsQuery, (err, res) => {
-      if (i === 999) {
-        console.log('done')
+    pgClient.query(updateFundedProjectsQuery, async (err, res) => {
+      await res;
+      console.log(i);
+      if (i === 8000000) {
+        console.log('done');
         pgClient.end();
       }
     })

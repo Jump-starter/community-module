@@ -1,6 +1,7 @@
 require('newrelic');
 const express = require('express');
 const pgClient = require('../db/postgres/index.js');
+const redis = require('redis');
 const cors = require('cors');
 
 const parser = require('body-parser');
