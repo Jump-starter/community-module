@@ -20,12 +20,11 @@ class Community extends Component {
     // axios.get(`http://54.191.230.153:80/api/community/${this.props.projectId || 0}`)
     axios.get(`http://localhost:3006/api/community/${this.props.projectId || 0}`)
       .then((response) => {
-        console.log(response);
-        // this.setState({
-        //   title: response.data[0].title,
-        //   creator: response.data[0].creator,
-        //   backers: response.data[1],
-        // });
+        this.setState({
+          title: response.data.title,
+          creator: response.data.creator,
+          backers: response.data.backers,
+        });
       })
       .catch((error) => {
         console.log('There was an error fetching this project:', error);

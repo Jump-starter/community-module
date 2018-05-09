@@ -8,5 +8,7 @@ module.exports = {
     "rules": {
         "no-shadow": 0,
         "react/prop-types": 0,
+        "prefer-destructuring": ["error", {"object": true, "array": false}],
+        "max-len": [2, 80, 4, {"ignoreUrls": true}, {"ignoreComments": true}]
     }
 };

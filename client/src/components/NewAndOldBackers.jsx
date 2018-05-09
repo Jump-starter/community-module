@@ -14,7 +14,7 @@ class NewAndOldBackers extends Component {
     let newBackers = 0;
     let oldBackers = 0;
     for (let i = 0; i < backers.length; i++) {
-      if (backers[i].fundedProjects === 0) {
+      if (backers[i].fundedProjects === 1) {
         newBackers++;
       } else {
         oldBackers++;

@@ -26,7 +26,7 @@ const seedProjects = () => {
 // seedProjects();
 
 const seedUsers = () => {
-  const usersHeader = 'name,city,country,avatar\n'
+  const usersHeader = 'name,city,country,fundedProjects,avatar\n'
   fs.writeFileSync('users.csv', usersHeader);
 
   let userID = 1;
@@ -38,8 +38,9 @@ const seedUsers = () => {
       let name = faker.name.findName();
       let city = faker.address.city();
       let country = faker.address.country();
+      let fundedProjectCount = 0;
       let avatar = `https://s3-us-west-1.amazonaws.com/jumpstartercommunity/avatar${avatarID}.jpg`;
-      userBatch += `${name}|${city}|${country}|${avatar}\n`;
+      userBatch += `${name}|${city}|${country}|${fundedProjectCount}|${avatar}\n`;
     }
     console.log(i);
     fs.appendFileSync('users.csv', userBatch);

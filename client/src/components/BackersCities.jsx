@@ -13,7 +13,7 @@ class BackersCities extends Component {
     const cities = {};
     const topCities = [];
     for (let i = 0; i < backers.length; i++) {
-      let backerCity = backers[i].city
+      const backerCity = backers[i].city;
       cities[backerCity] = cities[backerCity] + 1 || 1;
     }
 

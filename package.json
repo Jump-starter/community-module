@@ -2,7 +2,6 @@
   "name": "community-module",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
     "test": "jest --coverage",
     "build": "webpack -d --watch",
@@ -28,10 +27,12 @@
     "cors": "^2.8.4",
     "express": "^4.16.3",
     "faker": "^4.1.0",
+    "newrelic": "^4.1.0",
     "pg": "^7.4.3",
     "react": "^16.3.1",
     "react-dom": "^16.3.1",
     "sass": "^1.1.1",
+    "siege": "^0.2.0",
     "webpack-cli": "^2.0.14"
   },
   "devDependencies": {
