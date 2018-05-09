@@ -6,4 +6,5 @@ db/mongo/users.json
 db/postgres/projects.csv
 db/postgres/projects_users.csv
 db/postgres/users.csv
-/ignore/
+newrelic.js
+newrelic_agent.log

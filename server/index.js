@@ -98,7 +98,6 @@ app.get('/api/community/:id', (req, res) => {
       }
       const project = projectInfo.rows[0];
       const backers = backersInfo.rows;
-      console.log(backers);
       
       project.backers = backers;
       res.send(project);
