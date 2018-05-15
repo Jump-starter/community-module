@@ -1,8 +1,9 @@
 node_modules/
 .DS_Store
 client/dist/bundle.js
-db/mongo/projects.json
-db/mongo/users.json
 db/postgres/projects.csv
 db/postgres/projects_users.csv
 db/postgres/users.csv
+newrelic.js
+newrelic_agent.log
+ignore

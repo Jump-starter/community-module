@@ -1,0 +1,14 @@
+config:
+  target: 'http://ec2-54-215-140-14.us-west-1.compute.amazonaws.com'
+  phases:
+    - duration: 60
+      arrivalRate: 10
+  defaults:
+    headers:
+      x-my-service-auth: '987401838271002188298567'
+scenarios:
+  - flow:
+    - loop:
+      - get:
+          url: "/api/community/{{$randomNumber(1,10000)}}"
+      count: 100

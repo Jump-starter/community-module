@@ -1,2 +1,12 @@
 node_modules
 npm-debug.log
+insertFundedProjects.js
+test-setup.js
+.travis.yml
+.gitignore
+.eslintrc.js
+ignore
+benchmark.yml
+.travis.yml
+__tests__
+.git

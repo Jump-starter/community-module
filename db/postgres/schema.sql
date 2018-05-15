@@ -16,11 +16,12 @@ CREATE TABLE users (
   name VARCHAR(50),
   city VARCHAR(75),
   country VARCHAR(75),
+  funded_project_count INT,
   avatar TEXT
 );
 
 CREATE TABLE projects_users (
   id SERIAL PRIMARY KEY,
-  users_id INT NOT NULL REFERENCES users (id) ON UPDATE CASCADE ON DELETE CASCADE,
-  projects_id INT NOT NULL REFERENCES projects (id) ON UPDATE CASCADE ON DELETE CASCADE
+  users_id INT NOT NULL REFERENCES users (id) ON DELETE CASCADE,
+  projects_id INT NOT NULL REFERENCES projects (id) ON DELETE CASCADE
 );
