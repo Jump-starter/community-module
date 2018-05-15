@@ -1,7 +1,7 @@
 require('newrelic');
 const express = require('express');
-const pgClient = require('../db/postgres/index.js');
-const redis = require('redis');
+const cluster = require('cluster');
+const { handleGet } = require('./helpers/getHandlers.js');
 const cors = require('cors');
 
 const parser = require('body-parser');
@@ -15,6 +15,22 @@ app.set('port', (process.env.PORT || 3006));
 app.use(parser.json());
 app.use(express.static(`${__dirname}/../client/dist`));
 app.use(cors());
+
+if (cluster.isMaster) {
+  const cpuCount = require('os').cpus().length;
+  for (var i = 0; i < cpuCount; i += 1) {
+      cluster.fork();
+  }
+} else {
+  app.listen(app.get('port'));
+  console.log('Listening on', app.get('port'));
+  app.get('/api/community/:id', handleGet);
+}
+
+  // cluster.on('exit', function (worker) {
+//   console.log('Worker %d died :(', worker.id);
+//   cluster.fork();
+// });
 
 // Handle Get requests
 // app.get('/api/community/:id', (req, res) => {
@@ -71,39 +87,6 @@ app.use(cors());
 //   });
 // });
 
-app.get('/api/community/:id', (req, res) => {
-  const { id } = req.params;
-  // grab project information
-  const projectQuery = `SELECT p.title, p.creator
-                        FROM projects p
-                        WHERE p.id = ${id}`;
-  // grab backers for project
-  const backersQuery = `SELECT u.id, u.name, u.city, u.country, u.funded_project_count AS "fundedProjects", u.avatar
-                        FROM users u
-                        INNER JOIN projects_users pu
-                        ON u.id = pu.users_id
-                        WHERE pu.projects_id = ${id}`;
 
-  pgClient.query(projectQuery, (err, projectInfo) => {
-    if (err) {
-      res.status(500);
-      res.send(err);
-      return;
-    }
-    pgClient.query(backersQuery, (err, backersInfo) => {
-      if (err) {
-        res.status(500);
-        res.send(err);
-        return;
-      }
-      const project = projectInfo.rows[0];
-      const backers = backersInfo.rows;
-      
-      project.backers = backers;
-      res.send(project);
-    });
-  });
-});
-
-app.listen(app.get('port'));
-console.log('Listening on', app.get('port'));
+// user navigates to url => hostip:3210
+// host receives this 

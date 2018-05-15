@@ -17,14 +17,17 @@ class Community extends Component {
   }
 
   componentDidMount() {
-    // axios.get(`http://54.191.230.153:80/api/community/${this.props.projectId || 0}`)
-    axios.get(`http://localhost:3006/api/community/${this.props.projectId || 0}`)
+    let projectId = this.props.projectId || 0;
+    // axios.get(`http://localhost:3006/api/community/${projectId}`)
+    axios.get(`http://ec2-54-215-140-14.us-west-1.compute.amazonaws.com/api/community/${projectId}`)
       .then((response) => {
-        this.setState({
-          title: response.data.title,
-          creator: response.data.creator,
-          backers: response.data.backers,
-        });
+        if (response.data) {
+          this.setState({
+            title: response.data.title,
+            creator: response.data.creator,
+            backers: response.data.backers,
+          });
+        }
       })
       .catch((error) => {
         console.log('There was an error fetching this project:', error);
