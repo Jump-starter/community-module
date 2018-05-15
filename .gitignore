@@ -6,3 +6,4 @@ db/postgres/projects_users.csv
 db/postgres/users.csv
 newrelic.js
 newrelic_agent.log
+ignore
