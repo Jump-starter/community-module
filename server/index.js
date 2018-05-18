@@ -1,4 +1,5 @@
 require('newrelic');
+const path = require('path');
 const express = require('express');
 const cluster = require('cluster');
 const { handleGet } = require('./helpers/getHandlers.js');
@@ -13,8 +14,18 @@ module.exports.app = app;
 app.set('port', (process.env.PORT || 3006));
 
 app.use(parser.json());
-app.use(express.static(`${__dirname}/../client/dist`));
+// app.use(express.static(`${__dirname}/../client/dist`));
 app.use(cors());
+
+const React = require('react');
+const ReactDom = require('react-dom/server');
+const Layout = require('../templates/layout.js')
+let Community = require('../client/dist/serverbundle.js').default;
+
+const renderComponent = (component, props = {}) => {
+  component = React.createElement(component, props);
+  return ReactDom.renderToString(component);
+}
 
 if (cluster.isMaster) {
   const cpuCount = require('os').cpus().length;
@@ -24,6 +35,15 @@ if (cluster.isMaster) {
 } else {
   app.listen(app.get('port'));
   console.log('Listening on', app.get('port'));
+
+  app.get('/Z/:id', (req, res) => {
+    let { id } = req.params;
+    Community = renderComponent(Community, {projectId: id});
+    res.end(Layout(Community, id));
+  });
+
+  app.use('/assets', express.static(path.resolve(__dirname, '../client/dist/')));
+
   app.get('/api/community/:id', handleGet);
 }
 

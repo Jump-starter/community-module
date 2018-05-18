@@ -3,7 +3,7 @@ const pg = require('pg');
 const pgClient = new pg.Pool({
   host: 'community.ccwgyco2sbnt.us-west-1.rds.amazonaws.com',
   user: 'careylee',
-  password: process.env.PGPASSWORD,
+  password: 'jumpstarter',
   database: 'communitydb',
 });
 

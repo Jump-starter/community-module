@@ -1,5 +1,5 @@
 config:
-  target: 'http://ec2-54-215-140-14.us-west-1.compute.amazonaws.com'
+  target: 'http://localhost:3006'
   phases:
     - duration: 60
       arrivalRate: 10

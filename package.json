@@ -4,9 +4,9 @@
   "description": "",
   "scripts": {
     "test": "jest --coverage",
-    "build": "webpack -p",
+    "build": "webpack -d --watch",
     "style": "sass ./client/src/stylesheets/base.scss ./client/dist/styles.css",
-    "start": "NODE_ENV=production node server/index.js"
+    "start": "nodemon server/index.js"
   },
   "repository": {
     "type": "git",

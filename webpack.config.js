@@ -46,7 +46,7 @@ const common = {
 const client = {
   entry: './client.js',
   output: {
-    path: path.resolve(__dirname, '../dist'),
+    path: path.resolve(__dirname, 'client/dist'),
     filename: 'bundle.js',
   }
 };
@@ -55,7 +55,7 @@ const server = {
   entry: './server.js',
   target: 'node',
   output: {
-    path: path.resolve(__dirname, '../dist'),
+    path: path.resolve(__dirname, 'client/dist'),
     filename: 'serverbundle.js',
     libraryTarget: 'commonjs-module'
   }
