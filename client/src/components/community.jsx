@@ -18,8 +18,8 @@ class Community extends Component {
 
   componentDidMount() {
     let projectId = this.props.projectId || 0;
-    // axios.get(`http://localhost:3006/api/community/${projectId}`)
-    axios.get(`http://ec2-54-215-140-14.us-west-1.compute.amazonaws.com/api/community/${projectId}`)
+    axios.get(`http://localhost:3006/api/community/${projectId}`)
+    // axios.get(`http://ec2-54-215-140-14.us-west-1.compute.amazonaws.com/api/community/${projectId}`)
       .then((response) => {
         if (response.data) {
           this.setState({
@@ -36,8 +36,8 @@ class Community extends Component {
 
   render() {
     return (
-      <div className="communityModuleContainer">{/* eslint-disable
-      */}<TotalBackers totalBackers={this.state.backers.length} projectCreator={this.state.creator} />
+      <div className="communityModuleContainer">
+        <TotalBackers totalBackers={this.state.backers.length} projectCreator={this.state.creator} />
         <div className="communityLocationDataContainer">
           <BackersCities backers={this.state.backers} />
           <BackersCountries backers={this.state.backers} />

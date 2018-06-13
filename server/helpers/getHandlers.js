@@ -1,7 +1,6 @@
 const pgClient = require('../../db/postgres/index.js');
 const redisClient = require('../../db/postgres/redis.js');
 
-
 const handleGet = (req, res) => {
   const { id } = req.params;
   // grab project information
